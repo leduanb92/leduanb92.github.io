@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>
+    Global Company
+  </title>
+  <meta name="description" content="Global Company main page" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="leduanb" />
+  <script defer src="https://unpkg.com/@alpinejs/mask@3.10.2/dist/cdn.min.js"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .shadow-text {
+        text-shadow: 2px 2px 4px #000000aa;;
+      }
+      .shadow-semi-bold {
+        box-shadow: 0 0 5px 2px rgba(0,0,0,0.58)
+      }
+      .shadow-bold {
+        box-shadow: 0 0 8px 2px rgba(0,0,0,0.58)
+      }
+      .btn {
+        @apply bg-red-600 hover:bg-red-700 transform active:scale-95 transition duration-100 ease-in-out py-2 px-4 uppercase rounded shadow-bold
+      }
+      .form-control {
+        @apply rounded-lg placeholder-gray-400 shadow-semi-bold focus:shadow-bold w-full mb-3 border-2 border-transparent focus:border-blue-500;
+      }
+    }
+  </style>
+</head>
+
+<body class="leading-normal tracking-normal text-white bg-[#ba251c]" x-data="getData()">
+  <!--Nav-->
+  <nav id="header" class="fixed w-full z-30 top-0 text-white bg-gradient-to-b from-red-900 to-red-700 shadow-md"
+      @click.outside="mostrar_menu = false">
+    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+      <div class="pl-4 flex items-center">
+        <a class="text-white no-underline hover:no-underline font-bold text-xl lg:text-2xl" href="#">
+          <img src="./images/logo.svg" class="h-6 inline">
+          globalcompany
+        </a>
+      </div>
+      <div class="block lg:hidden pr-4">
+        <button class="flex items-center p-1 text-slate-100 hover:text-slate-300 focus:outline-none focus:shadow-outline 
+                      transition transform hover:scale-105 duration-200 ease-in-out"
+                @click="mostrar_menu = !mostrar_menu">
+          <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+      </div>
+      <div class="w-full lg:w-auto flex-grow lg:flex mt-2 lg:mt-0 text-white bg-transparent lg:items-center p-4 lg:p-0 z-20"
+        :class="!mostrar_menu ? 'hidden' : '' ">
+        <ul class="lg:flex justify-end flex-1 items-center">
+          <li class="mr-3">
+            <a class="w-full inline-block font-bold no-underline py-2 px-4 hover:bg-white/10" href="#">Inicio</a>
+          </li>
+          <li class="mr-3">
+            <a class="w-full inline-block no-underline py-2 px-4 hover:bg-white/10" href="#">FAQ</a>
+          </li>
+          <li class="mr-3">
+            <a class="w-full inline-block no-underline py-2 px-4 hover:bg-white/10" href="#">About
+              Us</a>
+          </li>
+        </ul>
+      </div>
+      </div>
+  </nav>
+
+  <div class="pt-24 px-8 md:px-16 lg:px-32 lg:min-h-screen">
+    <div class="mx-auto grid grid-cols-1 lg:grid-cols-2 lg:gap-x-20">
+      <div class="col-span-full">
+        <h1 class="my-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center lg:text-left font-bold shadow-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </h1>
+      </div>
+      <div class="justify-center">
+        <img src="./images/car.svg" class="w-full" />
+      </div>
+      <div class="mt-4 lg:mt-0 flex justify-center lg:items-end">
+        <img src="./images/tags.svg"
+          class="sm:w-2/5 lg:w-3/5 lg:h-3/4 sm:translate-x-56 md:translate-x-64 sm:-translate-y-32 scale-75 lg:transform-none" />
+      </div>
+      <div class="justify-center mb-4 sm:-mb-24 lg:mb-4 sm:-translate-y-28 lg:transform-none">
+        <p class="leading-normal text-md text-center lg:text-left">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae leo vel elit molestie molestie. Duis
+          fringilla eleifend ultricies. Donec euismod tincidunt varius. Vestibulum ante ipsum primis in faucibus orci
+          luctus et ultrices posuere cubilia Curae; Nam a dui interdum, tristique felis ac, adipiscing justo.
+        </p>
+      </div>
+      <div class="col-span-full flex justify-center">
+        <button type="button" class="btn mb-8 md:mb-24 mt-6" @click="mostrar_reglamento = !mostrar_reglamento">
+          <img class="h-6 inline-block" src="./images/documents.svg" />
+          Ver o regulamento
+        </button>
+      </div>
+      <div class="bg-[#a30e04] py-8 px-5 rounded-lg mb-4 max-h-min lg:block"
+        :class="!mostrar_reglamento ? 'hidden' : ''">
+        <h1 class="uppercase">Regulamento</h1>
+        <h2>Vitae leo vel elit molestie molestie.</h2>
+        <br>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae leo vel elit molestie molestie. Duis
+          fringilla eleifend ultricies. Donec euismod tincidunt varius. Vestibulum ante ipsum primis in faucibus orci
+          luctus et ultrices posuere cubilia Curae; Nam a dui interdum, tristique felis ac, adipiscing justo. Proin
+          elementum sapien id fringilla feugiat. Cras scelerisque luctus leo eget viverra. Vivamus fringilla, ligula a
+          volutpat semper, diam arcu interdum orci, eget viverra ligula purus eu risus. Fusce vestibulum pretium metus
+          id gravida. Ut tincidunt diam lorem, ac feugiat arcu tristique in. Aenean eleifend, sapien sed ullamcorper
+          aliquet, diam augue feugiat ipsum, in lacinia est eros a nibh. Cras vehicula venenatis libero, eu cursus urna
+          luctus at. Etiam pellentesque erat id dapibus dignissim.
+        </p>
+        <br>
+        <p>Morbi in elit in quam ornare blandit. Suspendisse dolor eros, laoreet eu commodo id, rutrum eu nunc. Nullam
+          fermentum ullamcorper orci, in imperdiet eros viverra ut. Etiam diam lectus, hendrerit et sollicitudin ac,
+          porta nec velit. Nam quis cursus velit, quis vehicula augue. Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Nullam pharetra faucibus vestibulum.</p>
+      </div>
+      <!-- Form begins-->
+      <div class="w-full sm:w-3/5 lg:w-full lg:pl-8 mx-auto">
+        <h1 class="text-2xl uppercase mb-4 w-full">Fale conosco</h1>
+        <form action="" class="grid grid-cols-2 gap-x-2 w-full text-slate-800" @submit.prevent="submitData">
+          <div class="flex flex-col col-span-full">
+            <input class="form-control" type="text" placeholder="Seu Nome" x-model="formData.nombre" />
+            <div x-show="form_errors && !formData.nombre.length" class="flex items-center p-2 -mt-1 mb-4 rounded-full fill-current bg-red-200 text-red-800">
+              <svg class="w-5 h-5 pt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path x-show="email_error" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span class="font-medium text-sm ml-2">
+                Este campo es obligatorio.
+              </span>
+            </div>
+          </div>
+          <!-- Email input begins-->
+          <div class="flex flex-col col-span-full">
+            <input class="form-control" type="text" placeholder="Seu e-mail" x-model="formData.email"
+              @keyup="validateEmail(formData.email)" @change="validateEmail(formData.email)"
+              @input="validateEmail(formData.email)" />
+            <div x-show="formData.email.length > 0 && email_error" class="flex items-center p-2 -mt-1 mb-4 rounded-full fill-current bg-red-200 text-red-800">
+              <svg class="w-5 h-5 pt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path x-show="email_error" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span class="font-medium text-sm ml-2">
+                La dirección de correo no es válida.
+              </span>
+            </div>
+          </div>
+          <!-- Email input ends-->
+          <!-- CPF input begins-->
+          <div class="flex flex-col col-span-full lg:col-span-1">
+            <input class="form-control" type="text" placeholder="CPF" x-model="formData.cpf"
+              x-mask="999.999.999-99" />
+            <div x-show="form_errors && formData.cpf.length < 14" class="flex items-center p-2 -mt-1 mb-4 rounded-full fill-current bg-red-200 text-red-800">
+              <svg class="w-5 h-5 pt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path x-show="email_error" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span class="font-medium text-sm ml-2">
+                Este campo es obligatorio. Debe contener 11 dígitos.
+              </span>
+            </div>
+          </div>
+          <!-- CPF input ends-->
+          <input class="form-control col-span-full lg:col-span-1 lg:row-start-4" type="text" placeholder="Telefone"
+            x-model="formData.telefono" x-mask="9999-99-99" />
+          <input class="form-control col-span-full lg:col-span-1 lg:row-start-4" type="text" placeholder="Celular"
+            x-model="formData.celular" x-mask="9-999-99-99" />
+          <!-- Concesionaria select begins-->
+          <div class="flex flex-col col-span-full">
+            <select class="form-control" x-model="formData.concesionaria">
+              <option value="" disabled selected>Escolha a concessionária</option>
+              <template x-for="option in concesionaria_opciones">
+                <option :value="option.value" x-text="option.text"></option>
+              </template>
+            </select>
+            <div x-show="form_errors && !formData.concesionaria.length"
+              class="flex items-center p-2 -mt-1 mb-4 rounded-full fill-current bg-red-200 text-red-800">
+              <svg class="w-5 h-5 pt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path x-show="email_error" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span class="font-medium text-sm ml-2">
+                Por favor, seleccione una concesionaria.
+              </span>
+            </div>
+          </div>
+          <!-- Concesionaria select ends-->
+          <!-- Mensaje input begins-->
+          <div class="flex flex-col col-span-full">
+            <textarea class="form-control h-36 resize-none" placeholder="Sua Mensagem" x-model="formData.mensaje"></textarea>
+            <div x-show="form_errors && !formData.mensaje.length"
+              class="flex items-center p-2 -mt-1 mb-4 rounded-full fill-current bg-red-200 text-red-800">
+              <svg class="w-5 h-5 pt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path x-show="email_error" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span class="font-medium text-sm ml-2">
+                Este campo es obligatorio.
+              </span>
+            </div>
+          </div>
+          <!-- Mensaje input ends-->
+
+          <div x-show="form_errors"
+              class="flex items-center p-2 -mt-1 mb-4 rounded-full fill-current bg-red-200 text-red-800">
+              <svg class="w-5 h-5 pt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path x-show="email_error" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span class="font-medium text-sm ml-2">
+                Rectifique los errores en el formulario e inténtelo de nuevo.
+              </span>
+            </div>
+          <button type="submit"
+            class="btn text-white mb-4 col-span-full lg:col-start-2 lg:max-w-fit lg:justify-self-end">Enviar</button>
+        </form>
+        <!-- Form ends-->
+      </div>
+    </div>
+  </div>
+  <!-- Waves -->
+  <div class="relative">
+    <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
+          <path
+            d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496"
+            opacity="0.100000001"></path>
+          <path
+            d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
+            opacity="0.100000001"></path>
+          <path
+            d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z"
+            id="Path-4" opacity="0.200000003"></path>
+        </g>
+        <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fill-rule="nonzero">
+          <path
+            d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z">
+          </path>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <!-- End Waves -->
+  <!--Footer-->
+  <footer class="bg-white">
+    <div class="container mx-auto px-8">
+      <div class="w-full flex flex-col md:flex-row py-6">
+        <div class="flex-auto mb-6 text-black">
+          <a class="text-red-700 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+            <img src="./images/logo.svg" class="h-6 lg:h-8 inline">
+            globalcompany
+          </a>
+        </div>
+        <div class="flex-1">
+          <p class="uppercase text-gray-500 md:mb-6">Links</p>
+          <ul class="list-reset mb-6">
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-red-700">FAQ</a>
+            </li>
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-red-700">Help</a>
+            </li>
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-red-700">Support</a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex-1">
+          <p class="uppercase text-gray-500 md:mb-6">Legal</p>
+          <ul class="list-reset mb-6">
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-red-700">Terms</a>
+            </li>
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-red-700">Privacy</a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex-1">
+          <p class="uppercase text-gray-500 md:mb-6">Social</p>
+          <ul class="list-reset mb-6">
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-red-700">Facebook</a>
+            </li>
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-red-700">Linkedin</a>
+            </li>
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-red-700">Twitter</a>
+            </li>
+          </ul>
+        </div>
+        <div class="flex-1">
+          <p class="uppercase text-gray-500 md:mb-6">Company</p>
+          <ul class="list-reset mb-6">
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-red-700">Official Blog</a>
+            </li>
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-red-700">About Us</a>
+            </li>
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-red-700">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function getData() {
+      return {
+        formData: {
+          nombre: "",
+          email: "",
+          cpf: "",
+          telefono: "",
+          celular: "",
+          mensaje: "",
+          concesionaria: "",
+        },
+        concesionaria_opciones: [
+          { 'value': 1, 'text': 'Concessionária 1' },
+          { 'value': 2, 'text': 'Concessionária 2' },
+          { 'value': 3, 'text': 'Concessionária 3' },
+          { 'value': 4, 'text': 'Concessionária 4' }
+        ],
+        email_error: false,
+        form_errors: false,
+        mostrar_reglamento: false,
+        mostrar_menu: false,
+        submitData() {
+          if (!this.formData.nombre.length
+              || !this.formData.email.length
+              || this.formData.cpf.length < 14
+              || !this.formData.concesionaria.length
+              || !this.formData.mensaje.length) {
+            this.form_errors = true;
+          } else if (this.email_error) {
+            this.form_errors = true;
+          } else {
+            this.formData.nombre = "";
+            this.formData.email = "";
+            this.formData.cpf = "";
+            this.formData.telefono = "";
+            this.formData.celular = "";
+            this.formData.concesionaria = "";
+            this.formData.mensaje = "";
+            this.form_errors = false;
+            alert("Su mensaje ha sido enviado. Gracias por contactar con nosotros.");
+          }
+        },
+        validateEmail(email) {
+          var re = /^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,}$/;
+          this.email_error = !re.test(email);
+        },
+      }
+    }
+  </script>
+</body>
+
+</html>
